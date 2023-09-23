@@ -10,14 +10,18 @@ import seaborn as sns
 #ayudas
 import pandas as pd
 import torch
+import csv
 """import keras"""
 
-"""#importacion de todos los datos
-import csv
-import data
+#importacion de todos los datos
+from data import absolutos as data
 
-with open("data/data.csv", newline='') as archivo:
-    informacion = csv.reader(archivo)
-    for fila in informacion:
-        print(', '.join(fila))
-print(informacion)"""
+with open("data/data.csv", newline='') as datacsv:
+    DATA_CSV = csv.reader(datacsv)
+    i = 0
+    for row in DATA_CSV:
+        if(i>5):
+            break
+        print(', '.join(row))
+        i+=1
+
