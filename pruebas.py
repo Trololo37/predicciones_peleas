@@ -1,4 +1,10 @@
 import joblib
+import pandas as pd
+import numpy as np
+import csv
+import warnings
+
+warnings.filterwarnings('ignore')
 
 model_knn_eucli = joblib.load('knn_model_eucli.pkl')
 model_knn_minko = joblib.load('knn_model_minko.pkl')
@@ -24,7 +30,7 @@ resultado4 = 0
 resultado5 = 2
 resultado6 = 1
 resultado7 = 1
-resultado8 = 2
+resultado8 = 1
 
 print("resultado prueba 1: ", resultado1)
 print("resultado prueba 2: ", resultado2)
@@ -34,52 +40,106 @@ print("resultado prueba 5: ", resultado5)
 print("resultado prueba 6: ", resultado6)
 print("resultado prueba 7: ", resultado7)
 print("resultado prueba 8: ", resultado8)
+print('\n')
 
-pred1_model_knn_eucli = model_knn_eucli.predict(prueba1)
-print("prueba 1", pred1_model_knn_eucli)
-pred2_model_knn_eucli = model_knn_eucli.predict(prueba2)
-print("prueba 2", pred2_model_knn_eucli)
-pred3_model_knn_eucli = model_knn_eucli.predict(prueba3)
-print("prueba 3", pred3_model_knn_eucli)
-pred4_model_knn_eucli = model_knn_eucli.predict(prueba4)
-print("prueba 4", pred4_model_knn_eucli)
-pred5_model_knn_eucli = model_knn_eucli.predict(prueba5)
-print("prueba 5", pred5_model_knn_eucli)
-print()
+with open('prueba1.csv', 'r') as f:
+    reader = csv.reader(f)
+    data = list(reader)
+    x1 = np.array(data)
 
-pred2_model_knn_minko = model_knn_minko.predict(prueba2)
-print("prueba 2", pred2_model_knn_eucli)
-pred3_model_knn_minko = model_knn_minko.predict(prueba3)
-print("prueba 3", pred3_model_knn_minko)
-pred4_model_knn_minko = model_knn_minko.predict(prueba4)
-print("prueba 4", pred4_model_knn_minko)
-pred5_model_knn_minko = model_knn_minko.predict(prueba5)
-print("prueba 5", pred5_model_knn_minko)
-pred6_model_knn_minko = model_knn_minko.predict(prueba6)
-print("prueba 6", pred6_model_knn_minko)
-pred7_model_knn_minko = model_knn_minko.predict(prueba7)
-print("prueba 7", pred7_model_knn_minko)
-print()
+with open('prueba2.csv', 'r') as f:
+    reader = csv.reader(f)
+    data = list(reader)
+    x2 = np.array(data)
 
-pred1_model_svm_linear = model_svm_linear.predict(prueba1)
+with open('prueba3.csv', 'r') as f:
+    reader = csv.reader(f)
+    data = list(reader)
+    x3 = np.array(data)
+
+with open('prueba4.csv', 'r') as f:
+    reader = csv.reader(f)
+    data = list(reader)
+    x4 = np.array(data)
+
+with open('prueba5.csv', 'r') as f:
+    reader = csv.reader(f)
+    data = list(reader)
+    x5 = np.array(data)
+
+with open('prueba6.csv', 'r') as f:
+    reader = csv.reader(f)
+    data = list(reader)
+    x6 = np.array(data)
+
+with open('prueba7.csv', 'r') as f:
+    reader = csv.reader(f)
+    data = list(reader)
+    x7 = np.array(data)
+
+with open('prueba8.csv', 'r') as f:
+    reader = csv.reader(f)
+    data = list(reader)
+    x8 = np.array(data)
+
+#prueba = pd.read_csv("prueba1.csv")
+
+pred1_model_svm_linear = model_svm_linear.predict(x1)
 print("prueba 1", pred1_model_svm_linear)
-pred2_model_svm_linear = model_svm_linear.predict(prueba2)
+
+"""print("modelo knn 'euclidean')
+pred1_model_knn_eucli = model_knn_eucli.predict(x1)
+print("prueba 1", pred1_model_knn_eucli)
+pred2_model_knn_eucli = model_knn_eucli.predict(x2)
+print("prueba 2", pred2_model_knn_eucli)
+pred3_model_knn_eucli = model_knn_eucli.predict(x3)
+print("prueba 3", pred3_model_knn_eucli)
+pred4_model_knn_eucli = model_knn_eucli.predict(x4)
+print("prueba 4", pred4_model_knn_eucli)
+pred5_model_knn_eucli = model_knn_eucli.predict(x5)
+print("prueba 5", pred5_model_knn_eucli)
+print()"""
+
+"""print("modelo knn 'minkowski')
+pred2_model_knn_minko = model_knn_minko.predict(x1)
+print("prueba 2", pred2_model_knn_minko)
+pred3_model_knn_minko = model_knn_minko.predict(x2)
+print("prueba 3", pred3_model_knn_minko)
+pred4_model_knn_minko = model_knn_minko.predict(x3)
+print("prueba 4", pred4_model_knn_minko)
+pred5_model_knn_minko = model_knn_minko.predict(x4)
+print("prueba 5", pred5_model_knn_minko)
+pred6_model_knn_minko = model_knn_minko.predict(x6)
+print("prueba 6", pred6_model_knn_minko)
+pred7_model_knn_minko = model_knn_minko.predict(x7)
+print("prueba 7", pred7_model_knn_minko)
+print()"""
+
+print("modelo lineal")
+pred1_model_svm_linear = model_svm_linear.predict(x1)
+print("prueba 1", pred1_model_svm_linear)
+pred2_model_svm_linear = model_svm_linear.predict(x2)
 print("prueba 2", pred2_model_svm_linear)
-pred3_model_svm_linear = model_svm_linear.predict(prueba3)
+pred3_model_svm_linear = model_svm_linear.predict(x3)
 print("prueba 3", pred3_model_svm_linear)
-pred6_model_svm_linear = model_svm_linear.predict(prueba6)
+pred6_model_svm_linear = model_svm_linear.predict(x4)
+print("prueba 4", pred6_model_svm_linear)
+pred6_model_svm_linear = model_svm_linear.predict(x5)
+print("prueba 5", pred6_model_svm_linear)
+pred6_model_svm_linear = model_svm_linear.predict(x6)
 print("prueba 6", pred6_model_svm_linear)
-pred7_model_svm_linear = model_svm_linear.predict(prueba7)
+pred7_model_svm_linear = model_svm_linear.predict(x7)
 print("prueba 7", pred7_model_svm_linear)
-pred8_model_svm_linear = model_svm_linear.predict(prueba8)
+pred8_model_svm_linear = model_svm_linear.predict(x8)
 print("prueba 8", pred8_model_svm_linear)
 print()
 
-pred1_model_svm_poly3 = model_svm_poly3.predict(prueba1)
+print("modelo poly grado 3")
+pred1_model_svm_poly3 = model_svm_poly3.predict(x1)
 print("prueba 1", pred1_model_svm_poly3)
-pred2_model_svm_poly3 = model_svm_poly3.predict(prueba2)
+pred2_model_svm_poly3 = model_svm_poly3.predict(x2)
 print("prueba 2", pred2_model_svm_poly3)
-pred3_model_svm_poly3 = model_svm_poly3.predict(prueba3)
+pred3_model_svm_poly3 = model_svm_poly3.predict(x3)
 print("prueba 3", pred3_model_svm_poly3)
 """pred4_model_svm_poly3 = model_svm_poly3.predict(prueba4)
 pred5_model_svm_poly3 = model_svm_poly3.predict(prueba5)
@@ -88,17 +148,19 @@ pred7_model_svm_poly3 = model_svm_poly3.predict(prueba7)
 pred8_model_svm_poly3 = model_svm_poly3.predict(prueba8)"""
 print()
 
-pred1_model_svm_poly5 = model_svm_poly5.predict(prueba1)
+print("modelo poly grado 5")
+pred1_model_svm_poly5 = model_svm_poly5.predict(x1)
 print("prueba 1", pred1_model_svm_poly5)
-pred2_model_svm_poly5 = model_svm_poly5.predict(prueba2)
+pred2_model_svm_poly5 = model_svm_poly5.predict(x2)
 print("prueba 2", pred2_model_svm_poly5)
-pred3_model_svm_poly5 = model_svm_poly5.predict(prueba3)
+pred3_model_svm_poly5 = model_svm_poly5.predict(x3)
 print("prueba 3", pred3_model_svm_poly5)
 """pred4_model_svm_poly5 = model_svm_poly5.predict(prueba4)
 pred5_model_svm_poly5 = model_svm_poly5.predict(prueba5)
 pred7_model_svm_poly5 = model_svm_poly5.predict(prueba7)"""
 print()
 
+print("modelo rbf")
 pred1_model_svm_rbf = model_svm_rbf.predict(prueba1)
 print("prueba 1", pred1_model_svm_rbf)
 pred2_model_svm_rbf = model_svm_rbf.predict(prueba2)
